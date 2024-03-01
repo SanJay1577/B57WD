@@ -41,7 +41,10 @@ xhr.open("GET", "https://restcountries.com/v3.1/all");
 xhr.send();
 xhr.onload = function () {
   const data = JSON.parse(xhr.response);
-  console.log(data[0]);
+  console.log(data);
+  for (let i = 0; i < data.length; i++) {
+    console.log(data[i].name.common);
+  }
 };
 const dummyJson = {
   name: "sanjay",
@@ -52,3 +55,7 @@ console.log(dummyJson); //{name : "sanjay"}
 console.log(strJson); //"{name: 'sanjay'}"
 const convJson = JSON.parse(strJson);
 console.log(convJson); //{name : "sanjay"}
+
+// const obj1 = { name: "sanjay", age: 1 };
+// const obj2 = { age: 1, name: "sanjay" };
+// console.log(obj1 === obj2); //true
