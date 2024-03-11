@@ -86,3 +86,112 @@ const guviMapped = mrf_arr.guviMap((value, index, accArr) => {
 });
 console.log("mrf guvi array", mrf_arr);
 console.log("Guvi array", guviMapped);
+
+//Filter
+console.log("--------Filter----------");
+const filter_Arr = mrf_arr.filter((val, index, accArr) => {
+  console.log(`
+        Value : ${val}
+        Index : ${index}
+        accArr: ${accArr}
+        `);
+  return val != 4; //boolean
+});
+console.log(mrf_arr);
+console.log(filter_Arr);
+
+//polyfill for filter
+
+Array.prototype.guviFilter = function (fn) {
+  let newArr = [];
+  for (let i = 0; i < this.length; i++) {
+    if (fn(this[i], i, this)) {
+      newArr.push(this[i]);
+    }
+  }
+  return newArr;
+};
+
+console.log("-------Guvi filter-----");
+const guviFilter_Arr = mrf_arr.guviFilter((val, index, accArr) => {
+  console.log(`
+        Value : ${val}
+        Index : ${index}
+        accArr: ${accArr}
+        `);
+  return val != 4; //boolean
+});
+console.log(mrf_arr);
+console.log(guviFilter_Arr);
+
+console.log("-----reduce----");
+// [1m 2m 3m 4m 5m] = number, storage, [], {}
+// var acc //variable for a storage
+const reducedvalue = mrf_arr.reduce(
+  (acc, val, index, accArr) => {
+    console.log(`
+  Value : ${val}
+  Index : ${index}
+  accArr: ${accArr}
+  `);
+    acc.value = acc.value + val;
+    acc.length = index + 1;
+    return acc;
+  },
+  { value: 0, length: 0 }
+);
+
+console.log(mrf_arr);
+console.log(reducedvalue);
+
+//Chaining of MRF
+const dummyArr = [1, 2, 3];
+const res = dummyArr
+  .map((val) => val + 3)
+  .filter((val) => val != 4)
+  .reduce((acc, val) => {
+    return (acc += val);
+  }, 0);
+console.log(res);
+
+const batch = [
+  {
+    studname: "rajesh",
+    marks: 67,
+  },
+  {
+    studname: "sandhya",
+    marks: 52,
+  },
+  {
+    studname: "Menon",
+    marks: 23,
+  },
+  {
+    studname: "Shankar",
+    marks: 17,
+  },
+];
+// function should process
+// add intermarks (10 marks for all students)
+//filter out passed students (passMarks: 35)
+//Average marks of passed students in batch()
+//avg = Totalofpassedmark/totalpassedstudents
+
+function getaveragePercentage(studArr, internalMarks) {
+  const result = studArr
+    .map((val) => val.marks + internalMarks)
+    .filter((val) => val >= 35)
+    .reduce(
+      (acc, val, index) => {
+        acc.totalMarks = acc.totalMarks + val;
+        acc.totalPassedStudents = index + 1;
+        acc.avgMarks = acc.totalMarks / acc.totalPassedStudents;
+        return acc;
+      },
+      { totalMarks: 0, totalPassedStudents: 0, avgMarks: 0 }
+    );
+  console.log(result.avgMarks.toFixed(2));
+}
+
+getaveragePercentage(batch, 15);
