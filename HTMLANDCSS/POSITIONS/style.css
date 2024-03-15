@@ -1,0 +1,41 @@
+#main-box {
+  border: 2px solid black;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  background-color: coral;
+  padding: 10px 0px 10px 0px;
+}
+
+.box {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  color: white;
+  text-align: center;
+  font-size: larger;
+}
+.absolute {
+  background-color: brown;
+  position: absolute;
+  left: 30px;
+  top: 10px;
+}
+
+.relative {
+  background-color: red;
+  position: relative;
+  left: 50px;
+}
+.sticky {
+  background-color: violet;
+  position: sticky;
+  top: 0;
+}
+.fixed {
+  background-color: orange;
+  position: fixed;
+  right: 0;
+  top: 0;
+}

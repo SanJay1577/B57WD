@@ -55,3 +55,9 @@ p {
   color: inherit;
   background: radial-gradient(circle, orange, violet);
 }
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 1rem;
+}
