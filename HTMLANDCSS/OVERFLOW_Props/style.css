@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap");
+
+.overflow-main {
+  width: 500px;
+  height: 500px;
+  background-color: burlywood;
+  margin: 20px;
+  padding: 10px;
+  /* //hidden, scroll, auto, visible */
+  /* Visiblily show the overflow content */
+  /* overflow: visible; */
+
+  /* hide the overflowing content */
+  /* overflow: hidden; */
+
+  /* Content that has to be scolled will be have scrollbar */
+  /* overflow: scroll; */
+
+  /* Gives scroll bar for needed axis */
+  overflow: auto;
+  /* axis vise we can give property */
+  /* overflow-x: property; */
+  font-family: Rubik Gemstones;
+}
+/* .pic-size {
+  font-size: 100px !important;
+} */
+
+img {
+  width: 700px;
+  height: 300px;
+}
+/*Mesurements 
+Absolute mesurements - cm, mm, m, km
+px pixel - (1/96 of an inch) - 1px pc:px-> 1:16
+pt points (1/72 of an inch) - 1pt
+pc picas (1/12 of an inch) - 1pc 
+vw - view width 
+vh - view height  */
+
+.mes {
+  width: 250px;
+  height: 250px;
+  border: 2px solid black;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+p {
+}
+:root {
+  font-size: 20px;
+}
+
+.div-1 {
+  font-size: 10px;
+  /* 1em = 10px */
+  /* 4em 40px */
+  width: 4em;
+  height: 4em;
+  background-color: blue;
+}
+
+.div-2 {
+  /* 1rem : 20px  root element is 20px*/
+  /* 2rem : 40px */
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(236, 111, 8);
+}
