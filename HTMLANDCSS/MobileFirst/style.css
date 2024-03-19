@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+}
+ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  justify-content: space-evenly;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: black;
+  color: white;
+}
+a:hover {
+  color: rgb(218, 117, 104);
+}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+section {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+#home {
+  grid-template-rows: 50vh 50vh;
+}
+
+#image-container {
+  display: grid;
+  place-items: center;
+  background-color: cadetblue;
+}
+
+#content-container {
+  display: grid;
+  place-items: center;
+  background-color: rgb(95, 121, 160);
+}
+
+#project {
+  display: grid;
+  grid-template-rows: 10vh 90vh;
+}
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  font-weight: bolder;
+}
+.sub-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+.card {
+  width: 150px;
+  height: 200px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+input,
+textarea {
+  width: 80vw;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: aliceblue;
+}
+textarea {
+  height: 30vh;
+}
+
+button {
+  padding: 10px;
+  text-align: center;
+}
