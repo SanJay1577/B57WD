@@ -1,0 +1,14 @@
+* {
+  background-color: darkslategray;
+}
+
+.bg-warm {
+  background-color: orange;
+  color: white;
+}
+
+.new-area {
+  margin: 20px;
+  background-color: burlywood;
+  padding: 10px;
+}
