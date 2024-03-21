@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="btn-conatainer">
+      <button class="btn btn-primary" onclick='alertMsg("This is a alert Msg")'>
+        Alert
+      </button>
+
+      <button class="btn btn-sec" onclick='promptMsg("Hi what is your name?")'>
+        Prompt
+      </button>
+
+      <button class="btn btn-info" onclick="confirmMsg('Are you sure?')">
+        Confirm
+      </button>
+    </div>
+
+    <input class="inp-box" type="text" placeholder="username" /> <br />
+    <input class="inp-box1" type="text" placeholder="batch" /> <br />
+    <input class="inp-box2" type="text" placeholder="age" /><br />
+    <button id="get-btn">Get Data</button>
+
+    <div id="result-div"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
