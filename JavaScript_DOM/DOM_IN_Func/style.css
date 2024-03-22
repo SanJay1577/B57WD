@@ -34,3 +34,11 @@
   padding: 10px;
   margin: 5px;
 }
+
+.btn-out {
+  background-color: rgb(73, 218, 73);
+}
+
+.btn-int {
+  background-color: rgb(207, 113, 25);
+}
