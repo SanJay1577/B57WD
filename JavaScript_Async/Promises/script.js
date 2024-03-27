@@ -1,3 +1,5 @@
+//Slection of DIV
+const cardContainer = document.querySelector(".main-container");
 //Promises
 
 //produce of promise
@@ -128,8 +130,35 @@ fetch("https://restcountries.com/v3.1/all", {
   method: "GET",
 })
   .then((res) => res.json())
-  .then((data) => console.log(data))
-  .catch((err) => console.log(err));
+  .then((data) => renderAllCards(data))
+  .catch((err) => console.log("[ERROR]", err));
 
 //create card() -> card -> button
-//renderAllCard() ->
+
+function renderAllCards(data) {
+  console.log(data);
+  data.map((val) => {
+    createCard(val);
+  });
+}
+
+function createCard(con) {
+  cardContainer.innerHTML += `
+  <div class="card">
+  <img id="flag" src=${con.flags.png} alt="Country Flag" />
+  <div class="card-info">
+    <h2>${con.name.common}</h2>
+    <p><span>Population </span>${con.population}</p>
+    <p><span>Region </span>${con.region}</p>
+    <p><span>Capital </span>${con.capital}</p>
+    <button >Click Weather</button>
+    <span></span>
+  </div>
+</div>
+  `;
+}
+
+function getWeather() {
+  //fetch
+  // data => wather data
+}
