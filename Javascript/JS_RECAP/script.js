@@ -151,3 +151,23 @@ class user {
 const person1 = new user("Sanjay", 25);
 console.log(person1);
 person1.getUserName();
+
+// NPQR;
+// 5123;
+// arr = [12345];
+function getMaximumValue(N, p, q, r, arr) {
+  console.log("printed");
+  arr.sort((a, b) => a - b);
+  let maximum_value = -Infinity; //26
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      for (let k = 0; k < N; k++) {
+        let sum_value = p * arr[i] + q * arr[j] + r * arr[k]; //26
+        maximum_value = Math.max(maximum_value, sum_value);
+      }
+    }
+  }
+  return maximum_value;
+}
+
+console.log(getMaximumValue(5, 1, 2, 3, [1, 2, 3, 4, 5]));
