@@ -1,0 +1,30 @@
+[
+  {
+    "companyName": "Amazon",
+    "role": "SDE",
+    "package": 10,
+    "experience": 1,
+    "location": "chennai"
+  },
+  {
+    "companyName": "Flipkart",
+    "role": "System Architect",
+    "package": 20,
+    "experience": 5,
+    "location": "bangalore"
+  },
+  {
+    "companyName": "PayPal",
+    "role": "Full Stack",
+    "package": 15,
+    "experience": 3,
+    "location": "chennai"
+  },
+  {
+    "companyName": "Myntra",
+    "role": "SDE",
+    "package": 12,
+    "experience": 2,
+    "location": "Hyderabad"
+  }
+]
