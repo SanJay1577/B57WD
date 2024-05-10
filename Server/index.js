@@ -1,60 +1,111 @@
-import fs from "fs";
-import os from "os";
-//calculator function
-const [, , oper, n1, n2] = process.argv;
+import express from "express";
 
-function calculate(operation, num1, num2) {
-  switch (operation) {
-    case "mul":
-      console.log("Multipy", num1 * num2);
-      return;
-    case "add":
-      console.log("Add", parseInt(num1) + parseInt(num2));
-      return;
-    case "sub":
-      console.log("Sub", num1 - num2);
-      return;
-  }
-}
-calculate(oper, n1, n2);
+//Setting PORT
+const PORT = 8080;
 
-fs.readFile("./demo.txt", "utf-8", (err, data) => {
-  if (err) {
-    console.log("ERROR : ", err);
-  } else {
-    console.log(data);
-  }
+let interviewData = [
+  {
+    _id: 1,
+    companyName: "Amazon",
+    role: "SDE",
+    package: 10,
+    experience: 1,
+    location: "chennai",
+  },
+  {
+    _id: 2,
+    companyName: "Flipkart",
+    role: "System Architect",
+    package: 20,
+    experience: 5,
+    location: "bangalore",
+  },
+  {
+    _id: 3,
+    companyName: "PayPal",
+    role: "Full Stack",
+    package: 15,
+    experience: 3,
+    location: "chennai",
+  },
+  {
+    _id: 4,
+    companyName: "Myntra",
+    role: "SDE",
+    package: 12,
+    experience: 2,
+    location: "Hyderabad",
+  },
+];
+
+//Initializing Express server
+const app = express();
+app.use(express.json());
+//Request to listent
+app.get("/", (req, res) => {
+  res.send(`<h1>Hi</h1>`);
 });
 
-const content = "Hey I'm writted by nodejs file system";
-
-fs.writeFile("./newfile.txt", content, (err) => {
-  if (err) {
-    console.log("ERROR : ", err);
-  } else {
-    console.log("File writted sucessfully");
-  }
+app.get("/query", (req, res) => {
+  //http://localhost:8080/query?lan=eng&id=xvf543&apikey=hasgdhjagsa
+  const data = req.query;
+  console.log(data);
+  res.send("query response");
 });
 
-const appednContent = "\n Hey I'm the second line of cool text";
-fs.appendFile("./cool.txt", appednContent, (err) => {
-  if (err) {
-    console.log("ERROR : ", err);
-  } else {
-    console.log("File Updated sucessfully");
-  }
+app.get("/param/:id/:token", (req, res) => {
+  //http://localhost:8080/param/123/tragvujhafuyat7867821as.jkjhasjha
+  const params = req.params;
+  console.log(params);
+  res.send("params send");
 });
 
-fs.unlink("./remove.txt", (err) => {
-  if (err) {
-    console.log("ERROR : ", err);
-  } else {
-    console.log("File removed sucessfully");
+//application api layers
+
+//getting datasets
+app.get("/all/interview", (req, res) => {
+  const _id = req.query.id;
+  if (_id) {
+    const reqData = interviewData.filter((data) => data._id == _id);
+    return res.json(reqData);
   }
+  return res.json(interviewData);
 });
 
-//Os access
-console.log("Total Memory :", os.totalmem());
-console.log("Version :", os.version());
-console.log("Free Memory :", os.freemem());
-console.log("CPU stats", os.cpus());
+//add new datasets
+app.post("/add/interview", (req, res) => {
+  const newInterview = { ...req.body, _id: interviewData.length + 1 };
+  interviewData.push(newInterview);
+  return res.json(interviewData);
+});
+
+app.put("/edit/interview/:id", (req, res) => {
+  const _id = req.params.id;
+  console.log(_id);
+  let editableData = interviewData.find((data) => data._id == _id);
+  editableData = { _id: editableData._id, ...req.body };
+  interviewData[editableData._id - 1] = editableData;
+  return res.json(interviewData);
+});
+
+app.delete("/delete/interview/:id", (req, res) => {
+  const _id = req.params.id;
+  let newset = interviewData.filter((data) => data._id != _id);
+  interviewData = [...newset];
+  return res.json(interviewData);
+});
+
+app.get("/setTime", (req, res) => {
+  const data = new Date();
+  const timestamp = data.toUTCString();
+  console.log(timestamp);
+  return res.send(timestamp);
+});
+
+//activating and listening server
+app.listen(PORT, () => {
+  console.log(`
+  Server started in PORT : ${PORT}
+  Listening in http://localhost:${PORT}
+          `);
+});
