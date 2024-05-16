@@ -1,6 +1,6 @@
 {
   "port": 8080,
   "apiKey": "asjaskahsjash",
-  "baseUrl": "https://ineterview/",
+  "baseUrl": "http://localhost/",
   "domainAccess": true
 }

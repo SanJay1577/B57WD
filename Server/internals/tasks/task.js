@@ -4,6 +4,10 @@
 
 const [, , filepath] = process.argv;
 import fs from "fs";
+import path from "path";
+console.log(__dirname); //current directory
+let dirName = path.join(__dirname, "timestaps");
+
 let configFile;
 
 function checkFile(file) {
@@ -40,4 +44,20 @@ function formatToJson(strData) {
   const jsonData = JSON.parse(strData);
   return jsonData;
 }
-loadFile(filepath);
+
+//loadFile(filepath);
+fs.readdir("./tasks", (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    data.map((file) => {
+      fs.readFile(`./tasks/${file}`, "utf-8", (err, data) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(data);
+        }
+      });
+    });
+  }
+});
