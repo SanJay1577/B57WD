@@ -3,6 +3,7 @@ import { dbConnection } from "./db.js";
 import { Users } from "./models/users.js";
 import { postsRouter } from "./routes/posts.js";
 import dotenv from "dotenv";
+import { userRouter } from "./routes/users.js";
 
 //Configuring Environmental Variables
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(express.json());
 
 //Routes intialization
 app.use("/api/posts", postsRouter);
+app.use("/api/users", userRouter);
 
 //activating and listening server
 app.listen(PORT, () => {

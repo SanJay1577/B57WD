@@ -76,3 +76,11 @@ callerFunction();
 // }
 
 // //exit terminal
+
+// function
+// create a file (.json)
+// write in that file (.json)
+
+// db = mainFunc()
+// db.createFile("name") // name.json
+// db.updateFile(content) // write in that json file
