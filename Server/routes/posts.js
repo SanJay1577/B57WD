@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 //get all
-const userId = "6642f22e86c2c026423e62f7";
+
 router.get("/all", async (req, res) => {
   try {
     const posts = await getAllPosts();
@@ -34,7 +34,7 @@ router.get("/all", async (req, res) => {
 router.get("/user/all", async (req, res) => {
   try {
     // TODO: Make Dynamic User After Autentication setup
-    const userPosts = await getUserPosts(userId);
+    const userPosts = await getUserPosts(req.user._id);
     if (userPosts.length <= 0) {
       return res.status(404).json({
         error: "No Data Available",
@@ -54,7 +54,7 @@ router.get("/user/all", async (req, res) => {
 router.post("/add", async (req, res) => {
   try {
     const currentDate = new Date().toJSON().slice(0, 10);
-    const newPost = await addNewPost(req, currentDate, userId);
+    const newPost = await addNewPost(req, currentDate);
     if (!newPost) {
       return res.status(400).json({
         error: "Error Occcured",

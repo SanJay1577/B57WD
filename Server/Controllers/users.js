@@ -12,3 +12,7 @@ export function addNewUser(req, hashedPassword) {
     password: hashedPassword,
   }).save();
 }
+
+export function getUserById(id) {
+  return Users.findById(id).select("_id username email");
+}

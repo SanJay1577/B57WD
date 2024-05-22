@@ -1,7 +1,6 @@
-// process.env.UV_THREADPOOL_SIZE = 5;
+process.env.UV_THREADPOOL_SIZE = 5;
 import crypto from "crypto";
-import fs from "fs";
-import callerFunction from "sanjay_convertor";
+
 // V8 (js - > c++) + libuv (os - access)
 const processStart = Date.now();
 function processFunc(num) {
@@ -10,45 +9,45 @@ function processFunc(num) {
   });
 }
 
-// processFunc(1);
-// processFunc(2);
-// processFunc(3);
-// processFunc(4);
+processFunc(1);
+processFunc(2);
+processFunc(3);
+processFunc(4);
 
-function nonBlockingFunction() {
-  fs.readFile("./sample.txt", "utf-8", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(data);
-    }
-  });
+// function nonBlockingFunction() {
+//   fs.readFile("./sample.txt", "utf-8", (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log(data);
+//     }
+//   });
 
-  fs.writeFile("write.txt", "new file writted", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("file written");
-    }
-  });
+//   fs.writeFile("write.txt", "new file writted", (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("file written");
+//     }
+//   });
 
-  console.log("file execution done");
-}
+//   console.log("file execution done");
+// }
 
 // nonBlockingFunction();
 
-function blockingFunction() {
-  const data = fs.readFileSync("./sample.txt", "utf-8");
-  console.log(data);
+// function blockingFunction() {
+//   const data = fs.readFileSync("./sample.txt", "utf-8");
+//   console.log(data);
 
-  fs.writeFileSync("write.txt", "new file writted");
+//   fs.writeFileSync("write.txt", "new file writted");
 
-  console.log("file execution done");
-}
+//   console.log("file execution done");
+// }
 
 //lockingFunction();
 
-callerFunction();
+// callerFunction();
 // function doSomething (){
 // yes we can
 // }

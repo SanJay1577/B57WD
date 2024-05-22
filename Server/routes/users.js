@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import { addNewUser, getUserByEmail } from "../Controllers/users.js";
+import { generateAuthtoken } from "../Controllers/auth.js";
 
 const router = express.Router();
 
@@ -20,9 +21,11 @@ router.post("/signup", async (req, res) => {
     //save and register new user in DB
     // return success message with user details
     user = await addNewUser(req, hashedPassword);
+    //generate auth token
+    const token = generateAuthtoken(user._id);
     return res.status(201).json({
       message: "User Registered Successfuly",
-      data: user,
+      token,
     });
   } catch (error) {
     console.log(error);
@@ -52,10 +55,12 @@ router.post("/login", async (req, res) => {
         error: "Invalid Credentials",
       });
     }
+    //generate auth token
+    const token = generateAuthtoken(user._id);
     //sending user information with success message
     return res.status(200).json({
       message: "Successfully Loggedin",
-      data: user,
+      token,
     });
   } catch (error) {
     console.log(error);

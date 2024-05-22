@@ -8,11 +8,11 @@ export function getUserPosts(userId) {
   return Posts.find({ user: userId }).populate("user", "username email");
 }
 
-export function addNewPost(req, currentDate, userId) {
+export function addNewPost(req, currentDate) {
   return new Posts({
     ...req.body,
     date: currentDate,
-    user: userId,
+    user: req.user._id,
   }).save();
 }
 

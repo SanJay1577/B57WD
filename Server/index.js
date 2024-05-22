@@ -4,6 +4,7 @@ import { Users } from "./models/users.js";
 import { postsRouter } from "./routes/posts.js";
 import dotenv from "dotenv";
 import { userRouter } from "./routes/users.js";
+import { isAuthenticated } from "./Middlewares/auth.js";
 
 //Configuring Environmental Variables
 dotenv.config();
@@ -22,7 +23,7 @@ const app = express();
 app.use(express.json());
 
 //Routes intialization
-app.use("/api/posts", postsRouter);
+app.use("/api/posts", isAuthenticated, postsRouter);
 app.use("/api/users", userRouter);
 
 //activating and listening server
