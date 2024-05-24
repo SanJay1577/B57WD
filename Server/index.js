@@ -1,8 +1,8 @@
 import express from "express";
 import { dbConnection } from "./db.js";
-import { Users } from "./models/users.js";
 import { postsRouter } from "./routes/posts.js";
 import dotenv from "dotenv";
+import cors from "cors";
 import { userRouter } from "./routes/users.js";
 import { isAuthenticated } from "./Middlewares/auth.js";
 
@@ -21,6 +21,7 @@ const app = express();
 
 //Middlewares
 app.use(express.json());
+app.use(cors());
 
 //Routes intialization
 app.use("/api/posts", isAuthenticated, postsRouter);
